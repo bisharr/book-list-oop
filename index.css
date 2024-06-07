@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-size: 62.5%;
+}
 option,
 label {
   font-size: 1.2em;
@@ -13,4 +16,53 @@ select {
   padding: 0.2rem 2rem;
   font-size: 1.1rem;
   /* border: none; */
+}
+.title-span {
+  color: dodgerblue;
+}
+.container {
+  max-width: 100rem;
+  text-align: center;
+  margin: 8rem auto;
+  font-size: 1.7rem;
+}
+.container input {
+  width: 50%;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s;
+}
+.container input:focus {
+  outline: dodgerblue;
+  border: 0.18rem solid dodgerblue;
+}
+.container label {
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+}
+.btn-submit {
+  background-color: dodgerblue;
+  border: none;
+  margin-top: 2rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  height: 2.7rem;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-submit:hover {
+  background-color: rgba(15, 116, 217, 0.898);
+}
+.table {
+  display: inline-block;
+  width: 50%;
+  background-color: rgba(255, 0, 0, 0.745);
+}
+th,
+td {
+  padding: 0.4rem 3.5rem;
+  font-size: 1.8rem;
 }
