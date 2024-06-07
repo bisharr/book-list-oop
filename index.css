@@ -11,6 +11,7 @@ label {
   font-size: 1.2em;
   border: none;
   padding: 1.1rem;
+  text-align: left;
 }
 select {
   padding: 0.2rem 2rem;
@@ -20,6 +21,20 @@ select {
 .title-span {
   color: dodgerblue;
 }
+.error-massage {
+  font-size: 1.8rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+}
+.massage-green {
+  color: rgb(19, 227, 19);
+}
+.massage-red {
+  color: rgb(237, 15, 15);
+}
+
 .container {
   max-width: 100rem;
   text-align: center;

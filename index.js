@@ -14,7 +14,7 @@ languageEl.addEventListener('change', function (e) {
 // all functions
 
 //Book class represents a Book
-
+const errorMsgEl = document.querySelector('.error-massage');
 class Book {
   constructor(title, author, isbn) {
     this.title = title;
@@ -57,6 +57,12 @@ class UI {
     document.querySelector('#author').value = '';
     document.querySelector('#ISBN').value = '';
   }
+
+  static showMassage(massage, classs) {
+    errorMsgEl.textContent = massage;
+    errorMsgEl.className = `${classs}`;
+    setTimeout(() => errorMsgEl.remove(), 3000);
+  }
   // static deleteEl(el) {
   //   if (e.el.classList.contains('danger')) {
   //     console.log('hey its right');
@@ -78,13 +84,20 @@ document.querySelector('#book-form').addEventListener('submit', function (e) {
   const author = document.querySelector('#author').value;
   const isbn = document.querySelector('#ISBN').value;
 
-  //instatiate book
-  const book = new Book(title, author, isbn);
-  console.log(book);
+  //validate
 
-  // Add book ui
-  UI.addBookTolist(book);
-  UI.clearFeilds();
+  if (title === '' || author === '' || isbn === '') {
+    UI.showMassage('Please fill all fields', 'massage-red');
+  } else {
+    //instatiate book
+    const book = new Book(title, author, isbn);
+    console.log(book);
+
+    // Add book ui
+    UI.addBookTolist(book);
+    UI.clearFeilds();
+    UI.showMassage('Book succesfully added', 'massage-green');
+  }
 });
 
 //Event: Remove a Book
@@ -92,5 +105,6 @@ document.querySelector('#book-list').addEventListener('click', function (e) {
   console.log(e.target);
   if (e.target.classList.contains('danger')) {
     e.target.parentElement.remove();
+    UI.showMassage('Book succesfully Removed', 'massage-green');
   }
 });
