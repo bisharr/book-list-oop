@@ -27,7 +27,8 @@ select {
   font-size: 1.7rem;
 }
 .container input {
-  width: 50%;
+  /* width: 57%; */
+  width: 50rem;
   padding: 0.4rem;
   margin-top: 0.5rem;
   transition: all 0.3s;
@@ -58,11 +59,22 @@ select {
 }
 .table {
   display: inline-block;
-  width: 50%;
-  background-color: rgba(255, 0, 0, 0.745);
+
+  border-collapse: collapse;
+}
+tbody tr:nth-child(odd) {
+  background-color: rgba(255, 0, 0, 0.318);
+}
+tbody tr:nth-child(even) {
+  background-color: rgba(255, 0, 0, 0.542);
 }
 th,
 td {
-  padding: 0.4rem 3.5rem;
+  padding: 0.5rem 3.5rem;
   font-size: 1.8rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.danger {
+  cursor: pointer;
 }
