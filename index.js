@@ -13,6 +13,36 @@ languageEl.addEventListener('change', function (e) {
 
 // all functions
 
+//store class: Handle storage
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
+  }
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+  static remove(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if (book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
 //Book class represents a Book
 const errorMsgEl = document.querySelector('.error-massage');
 class Book {
@@ -26,19 +56,7 @@ class Book {
 //UI class: handle Ui Tasks
 class UI {
   static displayBooks() {
-    const storedBook = [
-      {
-        title: 'Book One',
-        author: 'John Doe',
-        isbn: '327356',
-      },
-      {
-        title: 'Book Two',
-        author: 'hane Doe',
-        isbn: '383732',
-      },
-    ];
-    const books = storedBook;
+    const books = Store.getBooks();
 
     books.forEach((book) => UI.addBookTolist(book));
   }
@@ -63,15 +81,7 @@ class UI {
     errorMsgEl.className = `${classs}`;
     setTimeout(() => errorMsgEl.remove(), 3000);
   }
-  // static deleteEl(el) {
-  //   if (e.el.classList.contains('danger')) {
-  //     console.log('hey its right');
-  //     e.el.parentElment.remove();
-  //   }
-  // }
 }
-
-//store class: Handle storage
 
 //Event: Display Book
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
@@ -95,6 +105,10 @@ document.querySelector('#book-form').addEventListener('submit', function (e) {
 
     // Add book ui
     UI.addBookTolist(book);
+
+    //add book to store
+    Store.addBook(book);
+
     UI.clearFeilds();
     UI.showMassage('Book succesfully added', 'massage-green');
   }
@@ -105,6 +119,10 @@ document.querySelector('#book-list').addEventListener('click', function (e) {
   console.log(e.target);
   if (e.target.classList.contains('danger')) {
     e.target.parentElement.remove();
+
+    //remove Book from UI
+    Store.removeB;
+
     UI.showMassage('Book succesfully Removed', 'massage-green');
   }
 });
