@@ -93,3 +93,21 @@ td {
 .danger {
   cursor: pointer;
 }
+
+@media (max-width: 32em) {
+  html {
+    font-size: 45.25%;
+  }
+  input {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 20.9em) {
+  html {
+    font-size: 35.25%;
+  }
+  .btn-submit {
+    margin-top: 2rem;
+  }
+}

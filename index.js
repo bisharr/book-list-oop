@@ -1,16 +1,3 @@
-const languageEl = document.getElementById('language');
-const welcomeEl = document.querySelector('.welcome');
-console.log(languageEl);
-
-languageEl.addEventListener('change', function (e) {
-  console.log(e.target.value);
-  if (e.target.value === 'english') {
-    welcomeEl.textContent = 'Welcome';
-  } else {
-    welcomeEl.textContent = 'soo dhowoow';
-  }
-});
-
 // all functions
 
 //store class: Handle storage
@@ -120,9 +107,43 @@ document.querySelector('#book-list').addEventListener('click', function (e) {
   if (e.target.classList.contains('danger')) {
     e.target.parentElement.remove();
 
-    //remove Book from UI
-    Store.removeB;
+    //remove Book from the Store
+    Store.remove(e.target.parentElement.previousElementSibling.textContent);
 
     UI.showMassage('Book succesfully Removed', 'massage-green');
+  }
+});
+
+/* emplementing Languages */
+const myBook = document.querySelector('.my-book');
+const titleSpan = document.querySelector('.title-span');
+const titleInput = document.querySelector('.title-input');
+const authorInput = document.querySelector('.author-input');
+const isbnInput = document.querySelector('.isbn-input');
+const submitBtn = document.querySelector('.btn-submit');
+
+const thTitle = document.querySelector('.th-title');
+const thAuthor = document.querySelector('.th-author');
+const thisbn = document.querySelector('.th-isbn');
+const thCancel = document.querySelector('.th-cancel');
+const languageEl = document.getElementById('language');
+const englishLabel = document.querySelector('.languuage');
+
+console.log(languageEl);
+
+languageEl.addEventListener('change', function (e) {
+  console.log(e.target.value);
+  if (e.target.value === 'somali') {
+    englishLabel.textContent = 'Luuqad';
+    myBook.textContent = '📘gayga';
+    titleInput.textContent = 'Cinwaan';
+    authorInput.textContent = 'Qoraa';
+    submitBtn.value = 'Ku dar Book';
+    thAuthor.textContent = 'Qoraa';
+    thTitle.textContent = 'Cinwaan';
+    thCancel.textContent = 'Tirtir';
+
+    console.log(titleSpan);
+  } else {
   }
 });
